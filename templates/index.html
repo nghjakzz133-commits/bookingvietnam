@@ -931,13 +931,65 @@
     body {
     padding-top: 80px;
 }
+.user-dropdown {
+    position: relative;
+    cursor: pointer;
+}
+
+.user-menu {
+    color: #fff;
+    font-weight: 600;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 35px;
+    right: 0;
+    background: #1e1e1e;
+    border-radius: 8px;
+    min-width: 150px;
+    display: none;
+    flex-direction: column;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+.dropdown-menu a {
+    padding: 10px 15px;
+    color: #fff;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-menu a:hover {
+    background: #333;
+}
+
+.user-dropdown:hover .dropdown-menu {
+    display: flex;
+}
+
+.btn-login,
+.btn-register {
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+.btn-register {
+    background: #ff4d6d;
+    color: white !important;
+}
+
+.btn-register:hover {
+    background: #ff2e55;
+}
 
   </style>
 </head>
 <body>
     <div class="bg-animation"></div>
 
-    <header>
+  <header>
     <nav>
         <div class="logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
             PLAYSG
@@ -959,13 +1011,19 @@
                 </select>
             </li>
 
-            <!-- AUTH SECTION -->
             {% if current_user.is_authenticated %}
-                <li><a href="/dashboard">Dashboard</a></li>
-                <li><a href="/logout">Logout</a></li>
+            <li class="user-dropdown">
+                <div class="user-menu">
+                    👤 {{ current_user.name }} ▼
+                </div>
+                <div class="dropdown-menu">
+                    <a href="/dashboard">Dashboard</a>
+                    <a href="/logout">Logout</a>
+                </div>
+            </li>
             {% else %}
-                <li><a href="/login">Login</a></li>
-                <li><a href="/register">Register</a></li>
+                <li><a href="/login" class="btn-login">Login</a></li>
+                <li><a href="/register" class="btn-register">Register</a></li>
             {% endif %}
         </ul>
 
@@ -976,6 +1034,8 @@
         </div>
     </nav>
 </header>
+
+
 
 
    <section class="hero" id="home">
