@@ -938,30 +938,45 @@
     <div class="bg-animation"></div>
 
     <header>
-        <nav>
-            <div class="logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">PLAYSG</div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#venues">Địa điểm</a></li>
-                <li><a href="#events">Sự kiện</a></li>
-                <li><a href="#features">Tính năng</a></li>
-                <li><a href="#contact">Liên hệ</a></li>
-                <li>
-                    <select class="city-selector" id="headerCitySelect">
-                        <option value="saigon">🌃 Sài Gòn</option>
-                        <option value="hanoi">🏛️ Hà Nội</option>
-                        <option value="cantho">🌾 Cần Thơ</option>
-                        <option value="danang">🏖️ Đà Nẵng</option>
-                    </select>
-                </li>
-            </ul>
-            <div class="mobile-menu" id="mobileMenu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </nav>
-    </header>
+    <nav>
+        <div class="logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+            PLAYSG
+        </div>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#venues">Địa điểm</a></li>
+            <li><a href="#events">Sự kiện</a></li>
+            <li><a href="#features">Tính năng</a></li>
+            <li><a href="#contact">Liên hệ</a></li>
+
+            <li>
+                <select class="city-selector" id="headerCitySelect">
+                    <option value="saigon">🌃 Sài Gòn</option>
+                    <option value="hanoi">🏛️ Hà Nội</option>
+                    <option value="cantho">🌾 Cần Thơ</option>
+                    <option value="danang">🏖️ Đà Nẵng</option>
+                </select>
+            </li>
+
+            <!-- AUTH SECTION -->
+            {% if current_user.is_authenticated %}
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/logout">Logout</a></li>
+            {% else %}
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
+            {% endif %}
+        </ul>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+</header>
+
 
    <section class="hero" id="home">
     <div class="hero-content">
