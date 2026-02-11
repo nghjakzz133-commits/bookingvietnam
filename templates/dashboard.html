@@ -1,0 +1,27 @@
+<h2>Dashboard</h2>
+<p>Xin chào {{ current_user.name }}</p>
+
+<h3>Booking của bạn</h3>
+
+<ul>
+    {% for booking in bookings %}
+        <li>
+            {{ booking.venue_name }} - 
+            {{ booking.date }} - 
+            {{ booking.time }} - 
+            {{ booking.guest_count }} người - 
+            {{ booking.status }}
+        </li>
+    {% endfor %}
+</ul>
+
+<h3>Tạo Booking mới</h3>
+<form method="POST" action="/book">
+    <input type="text" name="venue" placeholder="Tên quán" required><br>
+    <input type="date" name="date" required><br>
+    <input type="time" name="time" required><br>
+    <input type="number" name="guests" placeholder="Số khách" required><br>
+    <button type="submit">Đặt bàn</button>
+</form>
+
+<a href="/logout">Logout</a>
